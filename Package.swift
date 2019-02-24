@@ -6,11 +6,12 @@ import PackageDescription
 let package = Package(
 	name: "SwiftChecker",
 	products: [
-		.library(name: "SwiftAST", targets: ["SwiftAST", "SwiftChecker"]),
 		.library(name: "SwiftChecker", targets: ["SwiftChecker"]),
 	],
+	dependencies: [
+		.package(url: "/Users/pasan/Development/SwiftAST", from: "0.1.0"),
+	],
 	targets: [
-		.target(name: "SwiftAST", path: "SwiftAST"),
 		.target(name: "SwiftChecker", dependencies: ["SwiftAST"]),
 		.testTarget(
 			name: "SwiftCheckerTests",

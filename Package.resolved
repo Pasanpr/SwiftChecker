@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftAST",
+        "repositoryURL": "/Users/pasan/Development/SwiftAST",
+        "state": {
+          "branch": null,
+          "revision": "4fae8aad9b93b51a0cfa777a312cb20e63707743",
+          "version": "0.1.7"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
