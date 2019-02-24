@@ -15,6 +15,19 @@ class DeclarationTests: XCTestCase {
         checker.setSource(source: "let foo = \"bar\"")
     }
     
+    func testLinuxSuiteIncludesAllTests() {
+        #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+        let thisClass = type(of: self)
+        let linuxCount = thisClass.__allTests.count
+        #if swift(>=4.0)
+        let darwinCount = thisClass.defaultTestSuite.testCaseCount
+        #else
+        let darwinCount = Int(thisClass.defaultTestSuite().testCaseCount)
+        #endif
+        XCTAssertEqual(linuxCount, darwinCount, "\(darwinCount - linuxCount) tests are missing from __allTests")
+        #endif
+    }
+    
     // MARK: - Constants
     
     func testConstantNames() {
