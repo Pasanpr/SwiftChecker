@@ -45,5 +45,9 @@ class DeclarationTests: XCTestCase {
         try! XCTAssertFalse(checker.assertContainsConstant(named: "foo", ofType: String.self, containingValue: "baz"))
     }
     
+    func testConstantContainsAnyValueOfType() {
+        try! XCTAssertTrue(checker.assertContainsConstant(named: "foo", ofType: String.self, containingValue: "discard"))
+    }
+    
     // MARK: - Variables
 }

@@ -37,13 +37,29 @@ extension SwiftChecker: ASTVisitor {
             return try visit(primary)
         case .prefix(_, let postfixExpr):
             return try visit(postfixExpr)
-        case .binary(let op, let lhs, let rhs):
+        case .binary:
             fatalError()
         }
     }
     
     public func visit(_ expression: PrimaryExpression) throws -> Bool {
         if let targetPrimaryExpression = targetPrimaryExpression {
+            // Ignoring the value of literals
+            // In the event that we don't care what students assign as a value
+            switch targetPrimaryExpression {
+            case .literal(let literal):
+                switch literal {
+                case .string(let value):
+                    if value == "discard" {
+                        return true
+                    }
+                    break
+                default: break
+                }
+            default: break
+            }
+            
+            
             return expression == targetPrimaryExpression
         }
         

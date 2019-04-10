@@ -38,6 +38,12 @@ extension SwiftChecker {
         return try assertContainsDeclaration(declaration)
     }
     
+    public func assertContainsConstant<T>(named name: String, ofType type: T.Type) throws -> Bool {
+        let literal = Literal.string("Discard")
+        let expression = Expression.prefix(operator: nil, rhs: .primary(.literal(literal)))
+        return try assertContainsConstant(named: name, ofType: type, containingExpression: expression)
+    }
+    
     public func assertContainsDeclaration(_ declaration: Declaration) throws -> Bool {
         self.targetDeclaration = declaration
         return try traverse()
