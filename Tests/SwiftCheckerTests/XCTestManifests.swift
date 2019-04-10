@@ -6,6 +6,7 @@ extension DeclarationTests {
         ("testConstantTypes", testConstantTypes),
         ("testConstantValues", testConstantValues),
         ("testConstantContainsAnyValueOfType", testConstantContainsAnyValueOfType),
+        ("testContainsConstant", testContainsConstant),
         ("testLinuxSuiteIncludesAllTests", testLinuxSuiteIncludesAllTests),
     ]
 }

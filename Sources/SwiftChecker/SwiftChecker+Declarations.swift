@@ -39,7 +39,7 @@ extension SwiftChecker {
     }
     
     public func assertContainsConstant<T>(named name: String, ofType type: T.Type) throws -> Bool {
-        let literal = Literal.string("Discard")
+        let literal = Literal.string("discard")
         let expression = Expression.prefix(operator: nil, rhs: .primary(.literal(literal)))
         return try assertContainsConstant(named: name, ofType: type, containingExpression: expression)
     }
